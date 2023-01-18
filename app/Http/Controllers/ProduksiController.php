@@ -119,7 +119,7 @@ class ProduksiController extends Controller
 
     public function addproduksi($id)
     {
-        $barang_jadi = RequestBarangJadi::with('jenisBarangJadis', 'warnaBarangJadis', 'produksi.barangmentah')->findOrFail($id);
+        $barang_jadi = RequestBarangJadi::with('jenisBarangJadis', 'warnaBarangJadis', 'produksi.barangmentah', 'pengiriman')->findOrFail($id);
         $barang_mentah = BarangMentah::all();
         return [
             'status' => 'OK',

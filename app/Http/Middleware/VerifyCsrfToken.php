@@ -22,5 +22,7 @@ class VerifyCsrfToken extends Middleware
         'http://127.0.0.1:8000/barangmentah/*',
         'http://127.0.0.1:8000/produksi/',
         'http://127.0.0.1:8000/produksi/*',
+        'http://127.0.0.1:8000/pengiriman/',
+        'http://127.0.0.1:8000/pengiriman/*',
     ];
 }

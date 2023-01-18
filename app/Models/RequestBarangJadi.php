@@ -26,4 +26,9 @@ class RequestBarangJadi extends Model
     {
         return $this->hasMany(Produksi::class, 'request_barang_jadi_id');
     }
+
+    public function pengiriman()
+    {
+        return $this->hasMany(Pengiriman::class, 'request_barang_jadi_id');
+    }
 }
