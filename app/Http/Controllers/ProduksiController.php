@@ -25,6 +25,23 @@ class ProduksiController extends Controller
         ];
     }
 
+    public function countdata()
+    {
+        $belum_diproduksi = RequestBarangJadi::where('status', 0)->orWhere('status', 1)->count();
+        $sudah_produksi = RequestBarangJadi::whereRelation('produksi', 'status_produksi', 1)->with('jenisBarangJadis', 'warnaBarangJadis', 'produksi')->count();
+        $belum_kirim = RequestBarangJadi::where('status', 2)->with('jenisBarangJadis', 'warnaBarangJadis', 'produksi')->count();
+        $sudah_kirim = RequestBarangJadi::where('status', 3)->with('jenisBarangJadis', 'warnaBarangJadis', 'produksi')->count();
+        return [
+            "status" => 1,
+            "data" => [
+                'belum_diproduksi' => $belum_diproduksi,
+                'sudah_diproduksi' => $sudah_produksi,
+                'belum_kirim' => $belum_kirim,
+                'sudah_kirim' => $sudah_kirim
+            ],
+        ];
+    }
+
     /**
      * Show the form for creating a new resource.
      *
